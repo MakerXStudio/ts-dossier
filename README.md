@@ -1,4 +1,4 @@
-﻿# TypeScript ObjectMother (ts-object-mother)
+# TypeScript ObjectMother (ts-object-mother)
 
 > An ObjectMother support library to facilitate the easy creation of builders in TypeScript
 

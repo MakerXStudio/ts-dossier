@@ -1,4 +1,4 @@
-﻿# Code of Conduct - ts-object-mother
+# Code of Conduct - ts-object-mother
 
 ## Our Pledge
 

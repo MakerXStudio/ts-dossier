@@ -1,4 +1,4 @@
-﻿<!-- omit in toc -->
+<!-- omit in toc -->
 # Contributing to ts-object-mother
 
 First off, thanks for taking the time to contribute! ❤️
