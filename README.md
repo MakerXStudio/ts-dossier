@@ -1,33 +1,4 @@
-﻿<!--- 👇 DELETE THIS SECTION 👇 -->
-# ⚠️ Attention Developers ⚠️
-
-Steps for using the template
-
-1. Click the 'Use this template' button in this repository
-2. Check out the source code of your newly created repository
-3. Run the powershell script `name-my-package.ps1`
-
-```ps1
-.\name-my-package.ps1
-or
-.\name-my-package.ps1 -PackageName "" -PackageTitle "" -PackageDescription ""
-```
-
-4. Delete the `name-my-package.ps1` script
-5. Add the keywords to the package.json file
-6. Fill in the usage section of this file
-7. Review the PR, Issue bug, and Issue feature GitHub template
-8. Generate a NPM token and add it as actions secret using the key `NPM_TOKEN` in the repository settings on GitHub
-   1. _Note: you will need to be added to the MakerX NPM org in order to generate a token and be able to publish the package_
-9. Create the wiki and add any additional documentation required
-10. Promote 🎉 your package 🎉
-
-⚠️ It's important to remember this repository uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) in combination with [semantic-release](https://github.com/semantic-release/semantic-release) to automate package publication. Therefore, your commit messages are critical, and the build process will lint them 
-
----
-<!--- 👆 DELETE THIS SECTION 👆 -->
-
-# TS Object Mother (ts-object-mother)
+﻿# TypeScript ObjectMother (ts-object-mother)
 
 > An ObjectMother support library to facilitate the easy creation of builders in TypeScript
 
@@ -45,10 +16,80 @@ npm install ts-object-mother --save-dev
 
 ## Usage
 
-** 🚨 TODO 🚨 **
+The first step is to define a model
 
-_The usage section should be minimal. Enough to demo the package, but not overload the reader_
+```ts
+type Colour = 'Blue' | 'Red' | 'Yellow' | 'Green'
 
+export type Shape = {
+  name: string
+  sides: number
+  colour: Colour
+}
+```
+
+Then define a builder for that model
+
+```ts
+import { randomElement, randomNumberBetween, randomString } from '@makerx/ts-object-mother'
+import { DataBuilder, proxyBuilder } from '@makerx/ts-object-mother'
+import { Shape } from './shape'
+
+class ShapeBuilder extends DataBuilder<Shape> {
+  constructor() {
+    super({
+      name: randomString(10, 20),
+      sides: randomNumberBetween(1, 4),
+      colour: randomElement(['Blue', 'Red', 'Yellow', 'Green']),
+    })
+  }
+
+  public withName(name: string) {
+    return this.with('name', name + ' Intercepted')
+  }
+}
+
+export const shapeBuilder = proxyBuilder<ShapeBuilder, Shape>(ShapeBuilder)
+```
+
+Then define a mother to build known models for testing
+
+```ts
+import { shapeBuilder } from './shape-builder'
+
+export const shapeMother = {
+  square: () => {
+    return shapeBuilder().withName('Square').withSides(4).withColour('Blue')
+  },
+  triangle: () => {
+    return shapeBuilder().withName('Triangle').withSides(3).withColour('Green')
+  },
+}
+```
+
+And write some tests
+
+```ts
+import { describe, expect, it } from '@jest/globals'
+import { shapeMother } from './shape-mother'
+
+describe('The square', () => {
+  it('has four sides', () => {
+    const shape = shapeMother.square().build()
+    expect(shape.sides).toBe(4)
+  })
+  it('is named correctly', () => {
+    const shape = shapeMother.square().build()
+    expect(shape.name).toBe('Square Intercepted')
+  })
+  it('is coloured blue', () => {
+    const shape = shapeMother.square().build()
+    expect(shape.colour).toBe('Blue')
+  })
+})
+```
+
+Try it out on [StackBlitz](https://stackblitz.com/edit/node-au9p8x?file=shape.spec.ts)
 
 [build-img]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml
@@ -60,9 +101,3 @@ _The usage section should be minimal. Enough to demo the package, but not overlo
 [issues-url]:https://github.com/MakerXStudio/ts-object-mother/issues
 [semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]:https://github.com/semantic-release/semantic-release
-
----
-
-**Attribution**
-
-This template was based on the great work of [Ryan Sonshine](https://github.com/ryansonshine/typescript-npm-package-template)
