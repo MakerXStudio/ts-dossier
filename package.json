@@ -17,7 +17,7 @@
   "homepage": "https://github.com/MakerXStudio/ts-object-mother#readme",
   "main": "./lib/src/index.js",
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "scripts": {
     "test": "jest --coverage",
