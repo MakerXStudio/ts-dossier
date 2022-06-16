@@ -1,4 +1,4 @@
-export { DataBuilder, proxyBuilder } from './data-utilties'
+export { DataBuilder, proxyBuilder } from './data-builder'
 export {
   randomDate,
   randomDateBetween,
@@ -9,4 +9,4 @@ export {
   randomString,
   randomElement,
   randomBoolean,
-} from './data-builder'
+} from './data-utilties'
