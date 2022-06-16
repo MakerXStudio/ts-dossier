@@ -1,4 +1,4 @@
-import { randomBoolean, randomId, randomNumber, randomNumberBetween, randomString } from '../src'
+import { randomBoolean, randomElement, randomId, randomNumber, randomNumberBetween, randomString } from '../src'
 
 describe('Data builder', () => {
   describe('randomNumber', () => {
@@ -30,6 +30,13 @@ describe('Data builder', () => {
   describe('randomBoolean', () => {
     it('returns a random boolean', () => {
       expect([true, false].includes(randomBoolean())).toBe(true)
+    })
+  })
+  describe('randomElement', () => {
+    it('returns a random element', () => {
+      const elements = [1, 2, 3, 4, 5, 6]
+      expect(randomElement(elements)).toBeGreaterThanOrEqual(1)
+      expect(randomElement(elements)).toBeLessThanOrEqual(6)
     })
   })
 })
