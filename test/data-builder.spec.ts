@@ -1,4 +1,4 @@
-import { randomId, randomNumber, randomNumberBetween, randomString } from '../src'
+import { randomBoolean, randomId, randomNumber, randomNumberBetween, randomString } from '../src'
 
 describe('Data builder', () => {
   describe('randomNumber', () => {
@@ -25,6 +25,11 @@ describe('Data builder', () => {
   describe('randomId', () => {
     it('generates a random ID of the requested length', () => {
       expect(randomId(10).length).toBe(10)
+    })
+  })
+  describe('randomBoolean', () => {
+    it('returns a random boolean', () => {
+      expect([true, false].includes(randomBoolean())).toBe(true)
     })
   })
 })
