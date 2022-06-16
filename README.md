@@ -1,4 +1,4 @@
-<!--- 👇 DELETE THIS SECTION 👇 -->
+﻿<!--- 👇 DELETE THIS SECTION 👇 -->
 # ⚠️ Attention Developers ⚠️
 
 Steps for using the template
@@ -27,9 +27,9 @@ or
 ---
 <!--- 👆 DELETE THIS SECTION 👆 -->
 
-# {{package-title}} ({{package-name}})
+# TS Object Mother (ts-object-mother)
 
-> {{package-description}}
+> An ObjectMother support library to facilitate the easy creation of builders in TypeScript
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -40,7 +40,7 @@ or
 ## Install
 
 ```bash
-npm install {{package-name}} --save-dev
+npm install ts-object-mother --save-dev
 ```
 
 ## Usage
@@ -50,14 +50,14 @@ npm install {{package-name}} --save-dev
 _The usage section should be minimal. Enough to demo the package, but not overload the reader_
 
 
-[build-img]:https://github.com/MakerXStudio/{{package-name}}/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/MakerXStudio/{{package-name}}/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/{{package-name}}
-[downloads-url]:https://www.npmtrends.com/@makerx/{{package-name}}
-[npm-img]:https://img.shields.io/npm/v/@makerx/{{package-name}}
-[npm-url]:https://www.npmjs.com/package/@makerx/{{package-name}}
-[issues-img]:https://img.shields.io/github/issues/MakerXStudio/{{package-name}}
-[issues-url]:https://github.com/MakerXStudio/{{package-name}}/issues
+[build-img]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml/badge.svg
+[build-url]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml
+[downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/ts-object-mother
+[downloads-url]:https://www.npmtrends.com/@makerx/ts-object-mother
+[npm-img]:https://img.shields.io/npm/v/@makerx/ts-object-mother
+[npm-url]:https://www.npmjs.com/package/@makerx/ts-object-mother
+[issues-img]:https://img.shields.io/github/issues/MakerXStudio/ts-object-mother
+[issues-url]:https://github.com/MakerXStudio/ts-object-mother/issues
 [semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]:https://github.com/semantic-release/semantic-release
 
