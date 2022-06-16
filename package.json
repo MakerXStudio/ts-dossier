@@ -15,7 +15,7 @@
     "url": "https://github.com/MakerXStudio/ts-object-mother/issues"
   },
   "homepage": "https://github.com/MakerXStudio/ts-object-mother#readme",
-  "main": "./lib/src/index.js",
+  "main": "./dist/src/index.js",
   "files": [
     "dist/**/*"
   ],
