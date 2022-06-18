@@ -42,4 +42,4 @@ dist/
 coverage
 
 # Docs generation
-wiki/code-docs
+docs/code

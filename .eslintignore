@@ -1,6 +1,6 @@
 node_modules
 dist
-wiki/code-docs
+docs/code
 .eslintrc.js
 commitlint.config.js
 jest.config.ts

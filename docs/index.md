@@ -2,4 +2,4 @@
 
 ## Table of contents
 
-[Code docs](#/code-docs/Home.md)
+[Code Documentation](#/code/Home.md)
