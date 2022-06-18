@@ -2,4 +2,4 @@
 
 ## Table of contents
 
-[Code Documentation](/code/README.md)
+[Code Documentation](code/README.md)
