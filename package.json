@@ -27,7 +27,7 @@
     "lint": "eslint ./src/ --ext .ts",
     "lint:fix": "eslint ./src/ --ext .ts --fix",
     "commitlint": "commitlint --edit -o",
-    "generate-docs": "typedoc src/"
+    "generate-doc": "typedoc src/"
   },
   "repository": {
     "type": "git",

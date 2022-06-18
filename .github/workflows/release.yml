@@ -43,6 +43,9 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Generate documentation
+        run: npm run generate-doc
+
       - name: Release package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
