@@ -26,7 +26,8 @@
     "semantic-release": "semantic-release",
     "lint": "eslint ./src/ --ext .ts",
     "lint:fix": "eslint ./src/ --ext .ts --fix",
-    "commitlint": "commitlint --edit -o"
+    "commitlint": "commitlint --edit -o",
+    "generate-docs": "typedoc src/"
   },
   "repository": {
     "type": "git",
@@ -53,6 +54,9 @@
     "semantic-release": "^19.0.3",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
+    "typedoc": "^0.22.17",
+    "typedoc-plugin-markdown": "^3.12.1",
+    "typedoc-github-wiki-theme": "^1.0.1",
     "typescript": "^4.7.3"
   },
   "release": {

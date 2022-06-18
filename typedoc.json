@@ -1,0 +1,11 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "entryPointStrategy": "Expand",
+  "out": "wiki/code-docs",
+  "plugin": ["typedoc-plugin-markdown", "typedoc-github-wiki-theme"],
+  "theme": "github-wiki",
+  "hideBreadcrumbs": true,
+  "exclude": ["src/index.ts"],
+  "readme": "none",
+  "cleanOutputDir": true
+}
