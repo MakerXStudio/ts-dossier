@@ -11,7 +11,7 @@
 ## Install
 
 ```bash
-npm install ts-object-mother --save-dev
+npm install @makerx/ts-object-mother --save-dev
 ```
 
 ## Usage
