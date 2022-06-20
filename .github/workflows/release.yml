@@ -46,11 +46,15 @@ jobs:
       - name: Generate documentation
         run: npm run generate-doc
 
+      - name: Build public website
+        working-directory: ./public-website/builder
+        run: npm run build
+
       - name: Deploy docs to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
-          folder: docs
+          folder: ./public-website/builder/out
 
       - name: Release package
         env:

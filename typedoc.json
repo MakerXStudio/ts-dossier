@@ -4,9 +4,7 @@
   "out": "docs/code",
   "plugin": ["typedoc-plugin-markdown"],
   "theme": "default",
-  "hideBreadcrumbs": true,
-  "exclude": ["src/index.ts"],
-  "readme": "none",
+
   "cleanOutputDir": true,
   "githubPages": false
 }
