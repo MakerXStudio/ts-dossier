@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto'
+
 /**
  * Generates a random number between 0 or [Number.MIN_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) when `allowNegative` is set
  * and [Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER).
@@ -44,14 +46,14 @@ export function randomString(min: number, max: number): string {
 }
 
 /**
- * Generates a random ID with a length of `length`
- *
+ * Generates a cryptographically random UUID in the form of 00000000-0000-0000-0000-000000000000
+ *  
  * ```typescript
- *   const id = randomId(15)
+ *   const id = randomId()
  * ```
  */
-export function randomId(length: number): string {
-  return randomString(length, length)
+export function randomId(): string {
+  return randomUUID()
 }
 
 export const randomDateRangeMin = new Date(1980, 1, 1)
