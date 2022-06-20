@@ -35,7 +35,7 @@ describe('Data utilities', () => {
   })
   describe('randomId', () => {
     it('generates a random ID of the requested length', () => {
-      expect(randomId(10).length).toBe(10)
+      expect(randomId()).toBeTruthy()
     })
   })
   describe('randomDate', () => {
