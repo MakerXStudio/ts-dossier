@@ -2,6 +2,5 @@
 *.js linguist-detectable=false
 
 # Treat text as lf
-* text=lf
-
-# Override text to be cr/crlf
+* text=auto
+* eol=lf

@@ -4,4 +4,5 @@ export type Shape = {
   name: string
   sides: number
   colour: Colour
+  radius?: number
 }

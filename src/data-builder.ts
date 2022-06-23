@@ -46,7 +46,7 @@ export abstract class DataBuilder<T> {
 }
 
 type WithMethods<T extends object, TBuilder> = {
-  [K in keyof T as K extends string ? `with${Capitalize<K>}` : never]: (d: T[K]) => WithMethods<T, TBuilder> & TBuilder
+  [K in keyof T as K extends string ? `with${Capitalize<K>}` : never]-?: (d: T[K]) => WithMethods<T, TBuilder> & TBuilder
 } & TBuilder
 
 const proxyHandler = {

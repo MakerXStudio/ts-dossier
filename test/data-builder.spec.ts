@@ -10,4 +10,7 @@ describe('Data builder', () => {
   it('set the value against the property', () => {
     expect(shapeBuilder().with('colour', 'Green').build().colour).toBe('Green')
   })
+  it('supports optional properties', () => {
+    expect(shapeBuilder().withRadius(10).build().radius).toBe(10)
+  })
 })
