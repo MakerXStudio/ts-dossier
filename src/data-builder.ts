@@ -26,13 +26,9 @@ export abstract class DataBuilder<T> {
     this.thing = thing
   }
 
-  protected updateThing<K extends keyof T>(key: K, value: T[K]): this {
+  public with<K extends keyof T>(key: K, value: T[K]): this {
     this.thing[key] = value
     return this
-  }
-
-  public with<K extends keyof T>(key: K, value: T[K]): this {
-    return this.updateThing(key, value)
   }
 
   public build(): T {
