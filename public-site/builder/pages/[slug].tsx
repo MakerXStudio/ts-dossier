@@ -2,35 +2,40 @@ import React from 'react'
 import matter from 'gray-matter'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { extractPageMeta, IPageMeta } from '../shared/pages'
-import { getPageMarkdownFileNames, readPageFile } from '../shared/build-time/pages'
+import { getMiscellaneousPageMarkdownFileName, getMiscellaneousPageMetaData, readPageFile } from '../shared/build-time/pages'
 import { covertMarkdownToHtml } from '../shared/build-time/utilities'
 import { Page } from '../components/Page'
 
-interface IDocPage {
+interface MiscellaneousPageProps {
   pageMeta: IPageMeta
   html: string
+  pages: IPageMeta[]
 }
 
-const DocPage = (props: IDocPage) => {
+const MiscellaneousPage = (props: MiscellaneousPageProps) => {
   return (
-    <Page title={props.pageMeta.title}>
-      <section dangerouslySetInnerHTML={{ __html: props.html }}></section>
+    <Page pages={props.pages} title={props.pageMeta.title}>
+      <div className="pt-24">
+        <section dangerouslySetInnerHTML={{ __html: props.html }}></section>
+      </div>
     </Page>
   )
 }
 
-export default DocPage
+export default MiscellaneousPage
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext): Promise<{ props: IDocPage }> => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext): Promise<{ props: MiscellaneousPageProps }> => {
   const slug = context.params!.slug
   const { data, content } = matter(readPageFile(`${slug}.md`))
   const blogMeta = extractPageMeta(data)
   const html = await covertMarkdownToHtml(content)
+  const pages = await getMiscellaneousPageMetaData()
 
   return {
     props: {
       pageMeta: blogMeta,
       html,
+      pages
     },
   }
 }
@@ -39,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<{
   paths: Array<string | { params: { slug: string } }>
   fallback: boolean
 }> => {
-  const markdownFileNames = await getPageMarkdownFileNames()
+  const markdownFileNames = await getMiscellaneousPageMarkdownFileName()
   const markdownFileNamesWithoutExtensions = markdownFileNames.map((fileName) => fileName.replace('.md', ''))
 
   return {

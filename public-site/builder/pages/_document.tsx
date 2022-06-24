@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>TS ObjectMother (ts-object-mother)</title>
           <meta
             name="description"
             content="An ObjectMother support library to facilitate the easy creation of builders in TypeScript"

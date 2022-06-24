@@ -7,7 +7,7 @@ export interface PageHeaderProps {
     titleSubscript?: ReactNode
 }
 
-export const Header = (props: PageHeaderProps) => (
+export const PageHeader = (props: PageHeaderProps) => (
     <header>
         <h1>{props.children}</h1>
         <If condition={isDefined(props.titleSubscript)}>{props.titleSubscript}</If>
