@@ -31,7 +31,7 @@
     @apply text-sm font-bold leading-tight w-full mb-1 mt-1
   }
   .markdown pre {
-    @apply bg-gray-200 p-5 m-5 font-mono text-sm
+    @apply bg-gray-200 p-5 m-5 font-mono text-sm overflow-x-auto
   }
   .markdown p {
     @apply mt-5 mb-5
