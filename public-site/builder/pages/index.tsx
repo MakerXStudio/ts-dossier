@@ -3,12 +3,12 @@ import { GetStaticProps } from 'next'
 import { IPageMeta } from '../shared/pages'
 import { getMiscellaneousPageMetaData, readPageFile } from '../shared/build-time/pages'
 import { Page } from '../components/Page'
-import { covertMarkdownToHtml } from '../shared/build-time/utilities'
 import matter from 'gray-matter'
+import ReactMarkdown from 'react-markdown'
 
 interface IIndexProps {
   pages: IPageMeta[]
-  html: string
+  markdown: string
 }
 
 const IndexPage = (props: IIndexProps) => {
@@ -26,7 +26,9 @@ const IndexPage = (props: IIndexProps) => {
     <Page pages={props.pages} {...titleProps}>
       <div className="border-b py-8 bg-white">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <section className="w-full markdown" dangerouslySetInnerHTML={{ __html: props.html }}></section>
+          <ReactMarkdown className="w-full markdown">
+            {props.markdown}
+          </ReactMarkdown>
         </div>
       </div>
     </Page>
@@ -39,12 +41,10 @@ export const getStaticProps: GetStaticProps = async (): Promise<{ props: IIndexP
   const pages = await getMiscellaneousPageMetaData()
 
   let { content } = matter(readPageFile('README.md', '../../'))
-
   // Remove readme.md title
   content = content.substring(content.indexOf('[!['))
 
-  const html = await covertMarkdownToHtml(content)
   return {
-    props: { pages, html },
+    props: { pages, markdown: content },
   }
 }

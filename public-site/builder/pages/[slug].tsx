@@ -3,12 +3,12 @@ import matter from 'gray-matter'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { extractPageMeta, IPageMeta } from '../shared/pages'
 import { getMiscellaneousPageMarkdownFileName, getMiscellaneousPageMetaData, readPageFile } from '../shared/build-time/pages'
-import { covertMarkdownToHtml } from '../shared/build-time/utilities'
 import { Page } from '../components/Page'
+import ReactMarkdown from 'react-markdown'
 
 interface MiscellaneousPageProps {
   pageMeta: IPageMeta
-  html: string
+  markdown: string
   pages: IPageMeta[]
 }
 
@@ -17,7 +17,9 @@ const MiscellaneousPage = (props: MiscellaneousPageProps) => {
     <Page pages={props.pages} title={props.pageMeta.title}>
       <div className="border-b py-8 bg-white">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <section className="w-full markdown" dangerouslySetInnerHTML={{ __html: props.html }}></section>
+          <ReactMarkdown className="w-full markdown">
+            {props.markdown}
+          </ReactMarkdown>
         </div>
       </div>
     </Page>
@@ -30,13 +32,12 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const slug = context.params!.slug
   const { data, content } = matter(readPageFile(`${slug}.md`))
   const blogMeta = extractPageMeta(data)
-  const html = await covertMarkdownToHtml(content)
   const pages = await getMiscellaneousPageMetaData()
 
   return {
     props: {
       pageMeta: blogMeta,
-      html,
+      markdown: content,
       pages,
     },
   }
