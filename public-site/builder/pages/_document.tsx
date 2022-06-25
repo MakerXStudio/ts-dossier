@@ -5,10 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta
-            name="description"
-            content="An ObjectMother support library to facilitate the easy creation of builders in TypeScript"
-          />
+          <meta name="description" content="An ObjectMother support library to facilitate the easy creation of builders in TypeScript" />
           <meta name="keywords" content="ts-object-mother opensource makerx" />
           <meta name="author" content="MakerX" />
 
@@ -32,12 +29,9 @@ class MyDocument extends Document {
 
           <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
         </Head>
-        <body
-          className="leading-normal tracking-normal text-white gradient"
-          style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
-        >
-        <Main />
-        <NextScript />
+        <body className="leading-normal tracking-normal text-white gradient" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )

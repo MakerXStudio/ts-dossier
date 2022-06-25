@@ -5,3 +5,26 @@
 .gradient {
   background: linear-gradient(90deg, #050b22 0%, #6cb1e4 100%);
 }
+
+/* Markdown to HTML stying */
+
+@layer base {
+  .markdown * {
+    @apply text-black
+  }
+  .markdown pre {
+    @apply bg-gray-200 p-5 m-5
+  }
+  .markdown p {
+    @apply mt-5 mb-5
+  }
+  .markdown p * {
+    @apply inline-block
+  }
+  .markdown a {
+    @apply text-blue-700 font-bold underline decoration-blue-700 decoration-[0.1rem]
+    motion-safe:transition-all motion-safe:duration-200
+    hover:decoration-[0.15rem] focus:decoration-[0.15rem] hover:decoration-blue-700/50 focus:decoration-blue-700/50
+  }
+
+}

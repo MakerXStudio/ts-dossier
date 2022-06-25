@@ -2,8 +2,8 @@ import { PageHeader } from './PageHeader'
 import React, { ReactNode } from 'react'
 import { SiteFooter } from './SiteFooter'
 import { If } from './If'
-import { SiteHeader } from "./SiteHeader";
-import { IPageMeta } from "../shared/pages";
+import { SiteHeader } from './SiteHeader'
+import { IPageMeta } from '../shared/pages'
 
 export interface PageProps {
   children: ReactNode

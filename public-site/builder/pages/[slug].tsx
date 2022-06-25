@@ -15,8 +15,10 @@ interface MiscellaneousPageProps {
 const MiscellaneousPage = (props: MiscellaneousPageProps) => {
   return (
     <Page pages={props.pages} title={props.pageMeta.title}>
-      <div className="pt-24">
-        <section dangerouslySetInnerHTML={{ __html: props.html }}></section>
+      <div className="bg-white border-b py-8">
+        <div className="container max-w-5xl mx-auto m-8 text-black">
+          <section className="markdown" dangerouslySetInnerHTML={{ __html: props.html }}></section>
+        </div>
       </div>
     </Page>
   )
@@ -35,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     props: {
       pageMeta: blogMeta,
       html,
-      pages
+      pages,
     },
   }
 }
