@@ -28,6 +28,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/x-icon" href="/theme/favicon/favicon.ico" />
 
           <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:400,700" rel="stylesheet" />
         </Head>
         <body className="leading-normal tracking-normal text-white gradient" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
           <Main />

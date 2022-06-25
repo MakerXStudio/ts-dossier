@@ -12,8 +12,26 @@
   .markdown * {
     @apply text-black
   }
+  .markdown h1 {
+    @apply text-4xl font-bold leading-tight w-full mb-3 mt-3
+  }
+  .markdown h2 {
+    @apply text-3xl font-bold leading-tight w-full mb-3 mt-3
+  }
+  .markdown h3 {
+    @apply text-2xl font-bold leading-tight w-full mb-2 mt-2
+  }
+  .markdown h4 {
+    @apply text-lg font-bold leading-tight w-full mb-2 mt-2
+  }
+  .markdown h5 {
+    @apply text-base font-bold leading-tight w-full mb-1 mt-1
+  }
+  .markdown h6 {
+    @apply text-sm font-bold leading-tight w-full mb-1 mt-1
+  }
   .markdown pre {
-    @apply bg-gray-200 p-5 m-5
+    @apply bg-gray-200 p-5 m-5 font-mono text-sm
   }
   .markdown p {
     @apply mt-5 mb-5
@@ -26,5 +44,28 @@
     motion-safe:transition-all motion-safe:duration-200
     hover:decoration-[0.15rem] focus:decoration-[0.15rem] hover:decoration-blue-700/50 focus:decoration-blue-700/50
   }
-
+  .markdown ul {
+    @apply list-disc ml-5 p-1
+  }
+  .markdown ol {
+    @apply list-decimal ml-5 p-1
+  }
+  .markdown hr {
+    @apply divide-y-8 divide-gray-500 my-6
+  }
+  .markdown table {
+    @apply m-5
+  }
+  .markdown table th, .markdown table td {
+    @apply border border-gray-400 p-3
+  }
+  .markdown p > img {
+    @apply max-w-full box-content pl-8
+  }
+  .markdown p a > img {
+    @apply max-w-full box-content px-1
+  }
+  .markdown blockquote {
+    @apply ml-2 pl-4 py-1 border-l-4 border-l-gray-200 italic
+  }
 }

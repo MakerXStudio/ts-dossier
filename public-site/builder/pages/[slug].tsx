@@ -15,9 +15,9 @@ interface MiscellaneousPageProps {
 const MiscellaneousPage = (props: MiscellaneousPageProps) => {
   return (
     <Page pages={props.pages} title={props.pageMeta.title}>
-      <div className="bg-white border-b py-8">
-        <div className="container max-w-5xl mx-auto m-8 text-black">
-          <section className="markdown" dangerouslySetInnerHTML={{ __html: props.html }}></section>
+      <div className="border-b py-8 bg-white">
+        <div className="container mx-auto flex flex-wrap pt-4 pb-12">
+          <section className="w-full markdown" dangerouslySetInnerHTML={{ __html: props.html }}></section>
         </div>
       </div>
     </Page>

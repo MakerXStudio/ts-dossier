@@ -7,15 +7,15 @@ interface SiteHeaderProps {
   pages: IPageMeta[]
 }
 
-const HeaderLink = ({ slug, name, selected = false }: { slug: string; name: string; selected?: boolean }) => {
+const HeaderLink = ({ slug, name, scrolling, selected = false }: { slug: string; name: string; scrolling:boolean, selected?: boolean }) => {
   return (
     <li className="mr-3">
       <Link href={slug}>
         <a
           className={
             selected
-              ? 'inline-block py-2 px-4 text-lg text-white font-bold'
-              : 'inline-block py-2 px-4 text-lg text-black no-underline hover:text-gray-100 hover:text-underline'
+              ? `inline-block py-2 px-4 text-lg font-bold`
+              : `inline-block py-2 px-4 text-lg ${scrolling ? 'text-white' : 'text-black'} no-underline hover:text-gray-100 hover:text-underline`
           }
         >
           {name}
@@ -102,9 +102,9 @@ export const SiteHeader = (props: SiteHeaderProps) => {
         >
           <ul className="list-reset lg:flex justify-end flex-1 items-center">
             {miscellaneousPageLinks.map((p) => (
-              <HeaderLink key={p.slug} {...p}></HeaderLink>
+              <HeaderLink key={p.slug} scrolling={scrolling} {...p}></HeaderLink>
             ))}
-            <HeaderLink name="Code Docs" slug="#"></HeaderLink>
+            <HeaderLink name="Code Docs"  scrolling={scrolling} slug="#"></HeaderLink>
           </ul>
           <a
             href="https://github.com/MakerXStudio/ts-object-mother"

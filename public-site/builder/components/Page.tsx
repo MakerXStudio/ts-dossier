@@ -1,14 +1,11 @@
-import { PageHeader } from './PageHeader'
+import { PageHeader, PageHeaderProps } from './PageHeader'
 import React, { ReactNode } from 'react'
 import { SiteFooter } from './SiteFooter'
-import { If } from './If'
 import { SiteHeader } from './SiteHeader'
 import { IPageMeta } from '../shared/pages'
 
-export interface PageProps {
+export interface PageProps extends PageHeaderProps {
   children: ReactNode
-  title?: ReactNode
-  titleSubscript?: ReactNode
   pages: IPageMeta[]
 }
 
@@ -16,9 +13,7 @@ export const Page = (props: PageProps) => {
   return (
     <>
       <SiteHeader pages={props.pages} />
-      <If condition={Boolean(props.title)}>
-        <PageHeader titleSubscript={props.titleSubscript}>{props.title}</PageHeader>
-      </If>
+      <PageHeader {...props}></PageHeader>
       <main>{props.children}</main>
       <SiteFooter></SiteFooter>
     </>
