@@ -5,6 +5,8 @@ import { getMiscellaneousPageMetaData, readPageFile } from '../shared/build-time
 import { Page } from '../components/Page'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { ghcolors as theme } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 interface IIndexProps {
   pages: IPageMeta[]
@@ -26,7 +28,27 @@ const IndexPage = (props: IIndexProps) => {
     <Page pages={props.pages} {...titleProps}>
       <div className="border-b py-8 bg-white">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <ReactMarkdown className="w-full markdown">
+          <ReactMarkdown
+            className="w-full markdown"
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    language={match[1]}
+                    style={theme as any}
+                    PreTag="div"
+                    customStyle={ { fontSize: '16px', fontFamily: 'mono' }}
+                    {...props}
+                  >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              },
+            }}
+          >
             {props.markdown}
           </ReactMarkdown>
         </div>

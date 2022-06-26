@@ -7,15 +7,25 @@ interface SiteHeaderProps {
   pages: IPageMeta[]
 }
 
-const HeaderLink = ({ slug, name, scrolling, selected = false }: { slug: string; name: string; scrolling:boolean, selected?: boolean }) => {
+const HeaderLink = ({
+  slug,
+  name,
+  scrolling,
+  selected = false,
+}: {
+  slug: string
+  name: string
+  scrolling: boolean
+  selected?: boolean
+}) => {
   return (
     <li className="mr-3">
       <Link href={slug}>
         <a
           className={
             selected
-              ? `inline-block py-2 px-4 text-lg font-bold`
-              : `inline-block py-2 px-4 text-lg ${scrolling ? 'text-white' : 'text-black'} no-underline hover:text-gray-100 hover:text-underline`
+              ? `inline-block py-2 px-4 text-lg text-white underline underline-offset-8 decoration-2 font-bold pointer-events-none`
+              : `inline-block py-2 px-4 text-lg ${scrolling ? 'text-white' : 'text-black'} no-underline hover:underline hover:underline-offset-8 hover:decoration-2 font-bold`
           }
         >
           {name}
@@ -51,12 +61,13 @@ export const SiteHeader = (props: SiteHeaderProps) => {
     }
   })
 
-
   return (
     <nav
       id="header"
-      className={`fixed w-full z-30 top-0 text-white ${hamburgerOpen ? 'bg-white lg:bg-transparent' : ''}  ${scrolling && !hamburgerOpen ? 'bg-black transform transition duration-500 ease-in-out' : ''} `}
-      onBlur={() => hamburgerOpen ? setTimeout(() => setHamburgerOpen(false), 250) : {}}
+      className={`fixed w-full z-30 top-0 text-white ${hamburgerOpen ? 'bg-white lg:bg-transparent' : ''}  ${
+        scrolling && !hamburgerOpen ? 'bg-black transform transition duration-500 ease-in-out' : ''
+      } `}
+      onBlur={() => (hamburgerOpen ? setTimeout(() => setHamburgerOpen(false), 250) : {})}
     >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
@@ -85,7 +96,9 @@ export const SiteHeader = (props: SiteHeaderProps) => {
         <div className="block lg:hidden pr-4">
           <button
             id="nav-toggle"
-            className={`flex items-center p-1 ${hamburgerOpen ? 'text-black' : 'text-white' } hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out`}
+            className={`flex items-center p-1 ${
+              hamburgerOpen ? 'text-black' : 'text-white'
+            } hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out`}
             onClick={() => setHamburgerOpen(!hamburgerOpen)}
           >
             <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +117,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
             {miscellaneousPageLinks.map((p) => (
               <HeaderLink key={p.slug} scrolling={scrolling} {...p}></HeaderLink>
             ))}
-            <HeaderLink name="Code Docs"  scrolling={scrolling} slug="#"></HeaderLink>
+            <HeaderLink name="Code Docs" scrolling={scrolling} slug="#"></HeaderLink>
           </ul>
           <a
             href="https://github.com/MakerXStudio/ts-object-mother"
