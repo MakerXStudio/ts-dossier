@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { extractPageMeta, IPageMeta } from '../shared/pages'
 import { getMiscellaneousPageMarkdownFileName, getMiscellaneousPageMetaData, readPageFile } from '../shared/build-time/pages'
 import { Page } from '../components/Page'
-import ReactMarkdown from 'react-markdown'
+import { Markdown } from '../components/Markdown'
 
 interface MiscellaneousPageProps {
   pageMeta: IPageMeta
@@ -17,9 +17,7 @@ const MiscellaneousPage = (props: MiscellaneousPageProps) => {
     <Page pages={props.pages} title={props.pageMeta.title}>
       <div className="border-b py-8 bg-white">
         <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <ReactMarkdown className="w-full markdown">
-            {props.markdown}
-          </ReactMarkdown>
+          <Markdown>{props.markdown}</Markdown>
         </div>
       </div>
     </Page>
