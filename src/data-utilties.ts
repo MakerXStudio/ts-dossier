@@ -95,3 +95,21 @@ export function incrementedNumber(key: string): number {
 export function randomElement<T>(elements: T[]): T {
   return elements[randomNumberBetween(0, elements.length - 1)]
 }
+
+// prettier-ignore
+const nouns = ['rock', 'plant', 'carrot', 'hamburger', 'pie', 'mood', 'caterpillar', 'grasshopper', 'lizard', 'monkey', 'table', 'tesla', 'dog', 'cat', 'rocket', 'moon', 'atom', 'art', 'map', 'music', 'policy', 'truth', 'ball', 'lamp', 'bike', 'bus', 'plane', 'ship', 'boat']
+// prettier-ignore
+const adjectives = ['adorable', 'agreeable', 'adventurous', 'bewildered', 'blushing', 'brave', 'careful', 'clever', 'condemned', 'creepy', 'disturbed', 'doubtful', 'clever', 'smart', 'brainy', 'breakable', 'blushing', 'clumsy', 'crazy', 'exuberant', 'funny', 'hilarious', 'jealous', 'modern']
+// prettier-ignore
+const adverb = ['really', 'madly', 'abnormally', 'always', 'anxiously', 'blissfully', 'frenetically', 'queasily', 'warmly', 'rightfully', 'generally', 'hopefully', 'wonderfully', 'gloomily', 'strictly', 'busily', 'terribly', 'mightily', 'sometimes', 'greatly', 'lazily', 'carelessly', 'rudely']
+// prettier-ignore
+const mailProviers = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'aol.com', 'msn.com', 'hotmail.co.uk', 'web.de', 'me.com', 'mac.com']
+
+export function randomThingName(): string {
+  const name = `${randomElement(adverb)} ${randomElement(adjectives)} ${randomElement(nouns)}`
+  return name[0].toUpperCase() + name.substring(1)
+}
+
+export function randomEmail(): string {
+  return `${randomElement(adverb)}_${randomElement(adjectives)}_${randomElement(nouns)}@${randomElement(mailProviers)}`
+}
