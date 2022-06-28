@@ -9,7 +9,7 @@ import {
   randomNumberBetween,
   randomString,
 } from '../src'
-import { randomDateRangeMax, randomDateRangeMin, resetIncrementedNumbers } from '../src/data-utilties'
+import { randomDateRangeMax, randomDateRangeMin, randomEmail, randomThingName, resetIncrementedNumbers } from '../src/data-utilties'
 
 describe('Data utilities', () => {
   describe('randomNumber', () => {
@@ -75,6 +75,16 @@ describe('Data utilities', () => {
       const elements = [1, 2, 3, 4, 5, 6]
       expect(randomElement(elements)).toBeGreaterThanOrEqual(1)
       expect(randomElement(elements)).toBeLessThanOrEqual(6)
+    })
+  })
+  describe('randomThingName', () => {
+    it('returns a random thing name', () => {
+      expect(randomThingName()).toMatch(/^[A-Z][a-z]+\s[a-z]+\s[a-z]+$/gm)
+    })
+  })
+  describe('randomEmail', () => {
+    it('returns a random email', () => {
+      expect(randomEmail()).toMatch(/^[a-z]+_[a-z]+_[a-z]+@[a-z]+\.[a-z]+$/gm)
     })
   })
 })
