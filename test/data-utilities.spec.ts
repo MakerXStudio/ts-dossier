@@ -12,7 +12,7 @@ import {
 import {
   randomDateRangeMax,
   randomDateRangeMin,
-  randomEmail,
+  randomEmail, randomPersonName,
   randomPhoneNumber,
   randomThingName, randomUrl,
   resetIncrementedNumbers,
@@ -103,6 +103,11 @@ describe('Data utilities', () => {
   describe('randomUrl', () => {
     it('returns a random url', () => {
       expect(randomUrl()).toMatch(/^[a-z]+-[a-z]+-[a-z]+\.[a-z\.]+$/gm)
+    })
+  })
+  describe('randomPersonName', () => {
+    it('returns a person name', () => {
+      expect(randomPersonName()).toMatch(/^[A-z]+\s[A-z]+$/gm)
     })
   })
 })
