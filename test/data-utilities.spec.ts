@@ -3,20 +3,19 @@ import {
   randomBoolean,
   randomDate,
   randomDateBetween,
+  randomDateRangeMax,
+  randomDateRangeMin,
   randomElement,
+  randomEmail,
   randomId,
   randomNumber,
   randomNumberBetween,
-  randomString,
-} from '../src'
-import {
-  randomDateRangeMax,
-  randomDateRangeMin,
-  randomEmail, randomPersonName,
+  randomPersonName,
   randomPhoneNumber,
-  randomThingName, randomUrl,
-  resetIncrementedNumbers,
-} from '../src/data-utilties'
+  randomString,
+  randomThingName,
+  randomUrl,
+} from '../src'
 
 describe('Data utilities', () => {
   describe('randomNumber', () => {
