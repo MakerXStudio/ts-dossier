@@ -113,3 +113,13 @@ export function randomThingName(): string {
 export function randomEmail(): string {
   return `${randomElement(adverb)}_${randomElement(adjectives)}_${randomElement(nouns)}@${randomElement(mailProviers)}`
 }
+
+export function randomPhoneNumber(length = 10) {
+  return randomNumberBetween(parseInt('1'.padEnd(length, '0')), parseInt('9'.padEnd(length, '9')))
+}
+
+const topLevelDomains = ['.com', '.com.au', 'co.uk', '.org', '.net', '.edu']
+
+export function randomUrl() {
+  return `${randomElement(adverb)}-${randomElement(adjectives)}-${randomElement(nouns)}${randomElement(topLevelDomains)}`
+}
