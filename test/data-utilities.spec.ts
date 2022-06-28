@@ -15,6 +15,7 @@ import {
   randomString,
   randomThingName,
   randomUrl,
+  resetIncrementedNumbers,
 } from '../src'
 
 describe('Data utilities', () => {
@@ -90,7 +91,7 @@ describe('Data utilities', () => {
   })
   describe('randomEmail', () => {
     it('returns a random email', () => {
-      expect(randomEmail()).toMatch(/^[a-z]+_[a-z]+_[a-z]+@[a-z]+\.[a-z\.]+$/gm)
+      expect(randomEmail()).toMatch(/^[a-z]+_[a-z]+_[a-z]+@[a-z]+\.[a-z.]+$/gm)
     })
   })
   describe('randomPhoneNumber', () => {
@@ -101,7 +102,7 @@ describe('Data utilities', () => {
   })
   describe('randomUrl', () => {
     it('returns a random url', () => {
-      expect(randomUrl()).toMatch(/^[a-z]+-[a-z]+-[a-z]+\.[a-z\.]+$/gm)
+      expect(randomUrl()).toMatch(/^[a-z]+-[a-z]+-[a-z]+\.[a-z.]+$/gm)
     })
   })
   describe('randomPersonName', () => {
