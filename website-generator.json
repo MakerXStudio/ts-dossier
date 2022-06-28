@@ -1,0 +1,20 @@
+{
+  "rootPath": null,
+  "readmeFileName": null,
+  "title": "TS Object Mother",
+  "titleSuperscript": "Proudly built and maintained by [MakerX](https://makerx.com.au)",
+  "author": null,
+  "name": null,
+  "description": null,
+  "gitHubUrl": null,
+  "soeTags": ["MakerX", "ObjectMother", "TypeScript", "TS", "Object-Mother"],
+  "miscellaneousPages": {
+    "path": "/docs"
+  },
+  "codeDocs": {
+    "path": "/ts-docs"
+  },
+  "theme": {
+    "imageLogo": "/nodes_modules/@makerx/repository-website-generator/theme/makerx-icon.png"
+  }
+}
