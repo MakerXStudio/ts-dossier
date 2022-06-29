@@ -8,11 +8,11 @@
   "description": null,
   "gitHubUrl": null,
   "soeTags": ["MakerX", "ObjectMother", "TypeScript", "TS", "Object-Mother"],
-  "miscellaneousPages": {
+  "markdownPages": {
     "path": "/docs"
   },
   "codeDocs": {
-    "path": "/ts-docs"
+    "path": "/code-docs"
   },
   "theme": {
     "imageLogo": "/nodes_modules/@makerx/repository-website-generator/theme/makerx-icon.png"
