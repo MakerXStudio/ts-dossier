@@ -1,7 +1,7 @@
 {
   "entryPoints": ["src/"],
   "entryPointStrategy": "expand",
-  "out": "ts-docs",
+  "out": "code-docs",
   "plugin": ["typedoc-plugin-markdown"],
   "theme": "default",
   "cleanOutputDir": true,
