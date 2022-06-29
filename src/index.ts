@@ -3,6 +3,7 @@ export {
   randomDate,
   randomDateBetween,
   randomNumberBetween,
+  randomFloatBetween,
   randomNumber,
   incrementedNumber,
   randomId,

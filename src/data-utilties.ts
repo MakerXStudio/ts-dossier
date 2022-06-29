@@ -27,6 +27,11 @@ export function randomNumberBetween(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+export function randomFloatBetween(min: number, max: number, decimals?: number) {
+  const float = Math.random() * (max - min) + min
+  return decimals ? parseFloat(float.toFixed(decimals)) : float
+}
+
 /**
  * Generates a random string with a length between `min` and `max`
  *

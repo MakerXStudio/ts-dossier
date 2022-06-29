@@ -7,6 +7,7 @@ import {
   randomDateRangeMin,
   randomElement,
   randomEmail,
+  randomFloatBetween,
   randomId,
   randomNumber,
   randomNumberBetween,
@@ -30,6 +31,20 @@ describe('Data utilities', () => {
 
       expect(sut).toBeGreaterThanOrEqual(5)
       expect(sut).toBeLessThanOrEqual(10)
+    })
+  })
+  describe('randomFloatBetween', () => {
+    it('generates a random float between two inputs', () => {
+      for (let i = 1; i < 99; i++) {
+        const decimalPlaces = randomNumberBetween(1, 20)
+
+        const sut = randomFloatBetween(0, i, decimalPlaces)
+        const decimals = sut.toLocaleString('en-au').split('.')
+
+        if (decimals.length === 2) expect(sut.toLocaleString('en-au').split('.')[1].length).toBeLessThanOrEqual(decimalPlaces)
+        expect(sut).toBeGreaterThanOrEqual(0)
+        expect(sut).toBeLessThanOrEqual(i)
+      }
     })
   })
   describe('randomString', () => {
