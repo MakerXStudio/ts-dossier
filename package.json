@@ -19,7 +19,6 @@
   "files": [
     "dist/**/*"
   ],
-
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch",
@@ -43,7 +42,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
-    "@makerx/repository-website-generator": "^1.1.2",
+    "@makerx/repository-website-generator": "^1.2.1",
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.42",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
