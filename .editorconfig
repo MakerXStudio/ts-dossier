@@ -1,26 +1,9 @@
 [*]
 charset = utf-8
-end_of_line = lf
-indent_size = 4
-indent_style = space
 insert_final_newline = true
+end_of_line = lf
+indent_style = space
+indent_size = 2
+tab_width = 2
+max_line_length = 140
 trim_trailing_whitespace = true
-
-[{*.css, *.less, *.scss}]
-indent_size = 2
-tab_width = 2
-
-[{*.ts,*.js,*.json}]
-indent_size = 2
-tab_width = 2
-
-[{*.bash,*.sh,*.zsh}]
-indent_size = 2
-tab_width = 2
-
-[{*.htm,*.html}]
-indent_size = 2
-tab_width = 2
-
-[{*.yaml,*.yml}]
-indent_size = 2

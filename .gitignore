@@ -42,4 +42,6 @@ dist/
 coverage
 
 # Docs generation
-docs/code
+docs
+code-docs
+out

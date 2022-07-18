@@ -17,5 +17,5 @@ export {
   randomThingName,
   resetIncrementedNumbers,
   randomDateRangeMax,
-  randomDateRangeMin
+  randomDateRangeMin,
 } from './data-utilties'

@@ -43,14 +43,14 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Generate documentation
-        run: npm run generate-doc
+      - name: Build public website
+        run: generate-website
 
       - name: Deploy docs to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
-          folder: docs
+          folder: ./out
 
       - name: Release package
         env:
