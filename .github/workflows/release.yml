@@ -44,7 +44,7 @@ jobs:
         run: npm test
 
       - name: Build public website
-        run: generate-website
+        run: npm generate-website
 
       - name: Deploy docs to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
