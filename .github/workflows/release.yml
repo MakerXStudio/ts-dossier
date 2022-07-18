@@ -47,7 +47,7 @@ jobs:
         run: npm run generate-website
 
       - name: Copy github pages configuration
-        run: cp .github/pages/.nojekyll .out
+        run: cp github/pages/.nojekyll out
 
       - name: Deploy docs to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
