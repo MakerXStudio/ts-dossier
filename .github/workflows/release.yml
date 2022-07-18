@@ -51,6 +51,7 @@ jobs:
         with:
           branch: gh-pages
           folder: ./out
+          single-commit: true
 
       - name: Release package
         env:
