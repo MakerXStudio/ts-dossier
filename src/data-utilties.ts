@@ -8,18 +8,21 @@ import { randomUUID } from 'crypto'
  *   const unsignedNumber = randomNumber()
  *   const signedNumber = randomNumber(true)
  * ```
- * @param allowNegative A flag to allow negative numbers.
+ * @param {boolean} [allowNegative=false] A flag to allow negative numbers.
  */
 export function randomNumber(allowNegative = false): number {
   return randomNumberBetween(allowNegative ? Number.MIN_SAFE_INTEGER : 0, Number.MAX_SAFE_INTEGER)
 }
 
 /**
- * Generates a random number between `min` and `max`
+ * Generates a random number between `min` and `max`.
  *
  * ```typescript
  *   const number = randomNumber(10, 20)
  * ```
+ *
+ * @param {number} min The minimum (inclusive).
+ * @param {number} max The maximum (inclusive).
  */
 export function randomNumberBetween(min: number, max: number): number {
   min = Math.ceil(min)
@@ -27,17 +30,30 @@ export function randomNumberBetween(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+/**
+ * Generates a float between `min` and `max`.
+ *
+ * ```typescript
+ *   const number = randomFloatBetween(10, 20)
+ * ```
+ * @param {number} min The minimum (inclusive).
+ * @param {number} max The maximum (inclusive).
+ * @param {number} [decimals] The maximum amount of decimals.
+ */
 export function randomFloatBetween(min: number, max: number, decimals?: number) {
   const float = Math.random() * (max - min) + min
   return decimals ? parseFloat(float.toFixed(decimals)) : float
 }
 
 /**
- * Generates a random string with a length between `min` and `max`
+ * Generates a random string with a length between `min` and `max`.
  *
  * ```typescript
  *   const string = randomString(5, 10)
  * ```
+ *
+ * @param {number} min The minimum length (inclusive).
+ * @param {number} max The maximum length (inclusive).
  */
 export function randomString(min: number, max: number): string {
   let result = ''
@@ -51,7 +67,7 @@ export function randomString(min: number, max: number): string {
 }
 
 /**
- * Generates a cryptographically random UUID in the form of 00000000-0000-0000-0000-000000000000
+ * Generates a cryptographically random UUID in the form of 00000000-0000-0000-0000-000000000000.
  *
  * ```typescript
  *   const id = randomId()
@@ -65,30 +81,64 @@ export const randomDateRangeMin = new Date(1980, 1, 1)
 export const randomDateRangeMax = new Date(2050, 1, 1)
 
 /**
- * Generates a random date between {@linkplain randomDateRangeMin} and {@linkplain randomDateRangeMax}
+ * Generates a random date between {@linkplain randomDateRangeMin} and {@linkplain randomDateRangeMax}.
  *
  * ```typescript
- *   const date = randomDate
+ *   const date = randomDate()
  * ```
  */
 export function randomDate(): Date {
   return randomDateBetween(randomDateRangeMax, randomDateRangeMax)
 }
 
+/**
+ * Generates a random date between `min` and `max`.
+ *
+ * ```typescript
+ *   const date = randomDateBetween(new Date(2001, 1, 1), new Date(2030, 1, 1))
+ * ```
+ *
+ * @param {Date} min The minimum date (inclusive).
+ * @param {Date} max The maximum date (inclusive).
+ */
 export function randomDateBetween(min: Date, max: Date): Date {
   return new Date(randomNumberBetween(new Date(min).getTime(), new Date(max).getTime()))
 }
 
+/**
+ * Generates a random bool `true` or `false`
+ *
+ * ```typescript
+ *   const bool = randomBoolean()
+ * ```
+ */
 export function randomBoolean(): boolean {
   return randomNumberBetween(0, 1) === 1
 }
 
 const incrementedNumberMap = new Map<string, number>()
 
+/**
+ * Resets the incremented counters set when called by {@linkplain incrementedNumber}.
+ */
 export function resetIncrementedNumbers() {
   incrementedNumberMap.clear()
 }
 
+/**
+ * Returns an incremented number or zero if be called with the `key` for the first time.
+ *
+ * ```typescript
+ *   let countKey1 = incrementedNumber('key1')
+ *   countKey1 = incrementedNumber('key1')
+ *   console.log(countKey1) // Outputs 1
+ *
+ *   const countKey2 = incrementedNumber('key2')
+ *   console.log(countKey2) // Outputs 0
+ * ```
+ *
+ * @param {string} key The key to track the incremented counter against.
+ */
 export function incrementedNumber(key: string): number {
   if (!incrementedNumberMap.has(key)) {
     incrementedNumberMap.set(key, 0)
@@ -97,6 +147,15 @@ export function incrementedNumber(key: string): number {
   return incrementedNumberMap.get(key) ?? 0
 }
 
+/**
+ * Returns a random element from the supplied collection.
+ *
+ * ```typescript
+ *   const randomElement = randomElement([1, 2, 3, 4, 5])
+ * ```
+ *
+ * @param {Array} elements The collection to select a random element from.
+ */
 export function randomElement<T>(elements: T[]): T {
   return elements[randomNumberBetween(0, elements.length - 1)]
 }
@@ -110,6 +169,21 @@ const adverb = ['really', 'madly', 'abnormally', 'always', 'anxiously', 'blissfu
 // prettier-ignore
 const mailProviers = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'aol.com', 'msn.com', 'hotmail.co.uk', 'web.de', 'me.com', 'mac.com']
 
+/**
+ * Generates a random "thing's" name.
+ *
+ * ```text
+ *   Examples:
+ *
+ *   1. really adorable rock
+ *   2. madly agreeable plant
+ *   3. abnormally adventurous hamburger
+ * ```
+ *
+ * ```typescript
+ *   const name = randomThingName()
+ * ```
+ */
 export function randomThingName(): string {
   const name = `${randomElement(adverb)} ${randomElement(adjectives)} ${randomElement(nouns)}`
   return name[0].toUpperCase() + name.substring(1)
@@ -122,20 +196,82 @@ const xxNames = ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara'
 // prettier-ignore
 const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzales', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin', 'Lee', 'Perez', 'Thompson', 'White', 'Harris', 'Sanchez', 'Clark', 'Ramirez', 'Lewis', 'Robinson', 'Walker', 'Young', 'Allen', 'King', 'Wright', 'Scott', 'Torres', 'Nguyen', 'Hill', 'Flores', 'Green', 'Adams', 'Nelson', 'Baker', 'Hall', 'Rivera', 'Campbell', 'Mitchell', 'Carter', 'Roberts', 'Gomez', 'Phillips', 'Evans', 'Turner', 'Diaz', 'Parker', 'Cruz', 'Edwards', 'Collins', 'Reyes', 'Stewart', 'Morris', 'Morales', 'Murphy', 'Cook', 'Rogers', 'Gutierrez', 'Ortiz', 'Morgan', 'Cooper', 'Peterson', 'Bailey', 'Reed', 'Kelly', 'Howard', 'Ramos', 'Kim', 'Cox', 'Ward', 'Richardson', 'Watson', 'Brooks', 'Chavez', 'Wood', 'James', 'Bennet', 'Gray', 'Mendoza', 'Ruiz', 'Hughes', 'Price', 'Alvarez', 'Castillo', 'Sanders', 'Patel', 'Long', 'Ross', 'Jimenez']
 
+/**
+ * Generates a random person's name.
+ *
+ * ```text
+ *   Examples:
+ *
+ *   1. James Smith
+ *   2. Mary Johnson
+ *   3. John Williams
+ *   5. Patricia Brown
+ * ```
+ *
+ * ```typescript
+ *   const name = randomPersonName()
+ * ```
+ */
 export function randomPersonName(): string {
   return `${randomElement([...xyNames, ...xxNames])} ${randomElement(lastNames)}`
 }
 
+/**
+ * Generates a random email address.
+ *
+ * ```text
+ *   Examples:
+ *
+ *   1. really_adorable_rock@gmail.com
+ *   2. madly_agreeable_plant@outlook.com
+ *   3. abnormally_adventurous_hamburger@yahoo.com
+ * ```
+ *
+ * ```typescript
+ *   const name = randomEmail()
+ * ```
+ */
 export function randomEmail(): string {
   return `${randomElement(adverb)}_${randomElement(adjectives)}_${randomElement(nouns)}@${randomElement(mailProviers)}`
 }
 
+/**
+ * Generates a random phone number.
+ *
+ * ```text
+ *   Examples:
+ *
+ *   1. 1000000000
+ *   2. 8974562314
+ *   3. 9982214305
+ * ```
+ *
+ * ```typescript
+ *   const phoneNumber = randomPhoneNumber()
+ * ```
+ * @param {number} [length = 10] The length of the phone number.
+ */
 export function randomPhoneNumber(length = 10) {
   return randomNumberBetween(parseInt('1'.padEnd(length, '0')), parseInt('9'.padEnd(length, '9')))
 }
 
 const topLevelDomains = ['.com', '.com.au', 'co.uk', '.org', '.net', '.edu']
 
+/**
+ * Generates a random url.
+ *
+ * ```text
+ *   Examples:
+ *
+ *   1. really-adorable-rock.com
+ *   2. madly-agreeable-plant.com.au
+ *   3. abnormally-adventurous-hamburger.co.uk
+ * ```
+ *
+ * ```typescript
+ *   const name = randomUrl()
+ * ```
+ */
 export function randomUrl() {
   return `${randomElement(adverb)}-${randomElement(adjectives)}-${randomElement(nouns)}${randomElement(topLevelDomains)}`
 }

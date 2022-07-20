@@ -2,6 +2,19 @@
 
 // Ref: https://javascript.plainenglish.io/deep-clone-an-object-and-preserve-its-type-with-typescript-d488c35e5574
 // TODO: Make this the fallback when using classes or when structuredClone is unavailable
+/**
+ * Deeply clones the supplied source
+ *
+ * ```typescript
+ *   const source = { a: 1, b: { a: 2 } }
+ *   const cloneA = deepClone(source)
+ *   console.log(cloneA !== source) // Outputs false
+ * ```
+ *
+ * @template T
+ * @param {T} source The source value to clone
+ * @return {T} A clone of the source
+ */
 export function deepClone<T>(source: T): T {
   if (Array.isArray(source)) return source.map((item) => deepClone(item)) as unknown as T
 
