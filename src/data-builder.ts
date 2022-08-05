@@ -41,9 +41,13 @@ export abstract class DataBuilder<T> {
   }
 }
 
-type WithMethods<T extends object, TBuilder> = {
-  [K in keyof T as K extends string ? `with${Capitalize<K>}` : never]-?: (d: T[K]) => WithMethods<T, TBuilder> & TBuilder
-} & TBuilder
+type WithMethods<T extends object, TBuilder> = CoerceIntellisense<
+  {
+    [K in keyof T as K extends string ? `with${Capitalize<K>}` : never]-?: (d: T[K]) => WithMethods<T, TBuilder> & TBuilder
+  } & TBuilder
+>
+
+export type CoerceIntellisense<T> = T extends infer O ? { [K in keyof O]: O[K] } : never
 
 const proxyHandler = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
