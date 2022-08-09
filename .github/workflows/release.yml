@@ -11,7 +11,7 @@ jobs:
     name: Release package to NPM
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -42,20 +42,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      - name: Build public website
-        run: npm run generate-website
-
-      - name: Copy github pages configuration
-        run: cp .github/pages/.nojekyll out
-        shell: bash
-
-      - name: Deploy docs to GitHub pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: ./out
-          single-commit: true
 
       - name: Release package
         env:
