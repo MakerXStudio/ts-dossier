@@ -1,7 +1,7 @@
 node_modules
 dist
-docs/code
+code-docs
+out
 **/.eslintrc.js
 commitlint.config.js
 jest.config.ts
-public-site

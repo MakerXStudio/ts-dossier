@@ -41,7 +41,6 @@ dist/
 # Coverage report
 coverage
 
-# Docs generation
-docs
-code-docs
-out
+# Website & Code docs generation
+code-docs/
+out/
