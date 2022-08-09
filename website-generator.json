@@ -14,6 +14,9 @@
     "path": "/code-docs"
   },
   "theme": {
-    "imageLogo": "/theme/makerx-icon.png"
-  }
+    "iconLogo": "/theme/makerx-icon.png",
+    "imageLogo": "/theme/makerx-logo.png",
+    "imageLogoLink": "https://makerx.com.au"
+  },
+  "attribution": []
 }
