@@ -91,6 +91,29 @@ describe('The square', () => {
 
 Try it out on [StackBlitz](https://stackblitz.com/edit/node-au9p8x?file=shape.spec.ts)
 
+## Random Data Builders
+
+Dossier come with a variety of random data builders - View detailed function descriptions includes arguments in the [code docs](https://makerxstudio.github.io/ts-dossier/docs/modules~data_utilties).
+
+| Name                      | Function            | Other                                                                        |
+|---------------------------|---------------------|------------------------------------------------------------------------------|
+| Number                    | randomNumber        |                                                                              |
+| Number between            | randomNumberBetween |                                                                              |
+| Float between             | randomFloatBetween  |                                                                              |
+| String                    | randomString        |                                                                              |
+| ID                        | randomId            |                                                                              |
+| Date                      | randomDate          |                                                                              |
+| Date between              | randomDateBetween   |                                                                              |
+| Boolean                   | randomBoolean       |                                                                              |
+| Incremented number        | incrementedNumber   | Returns a unique incremented number. Call `resetIncrementedNumbers` to reset |
+| Element from a collection | randomElement       |                                                                              |
+| Name of a thing           | randomThingName     |                                                                              |
+| Name of a person          | randomPersonName    |                                                                              |
+| Email                     | randomEmail         |                                                                              |
+| Phone number              | randomPhoneNumber   |                                                                              |
+| URL                       | randomUrl           |                                                                              |
+
+
 [build-img]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml
 [downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/ts-dossier
