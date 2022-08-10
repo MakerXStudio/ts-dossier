@@ -15,11 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: lts/*
-
       - name: Use Node.js latest LTS version
         uses: actions/setup-node@v2
         with:
