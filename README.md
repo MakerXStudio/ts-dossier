@@ -1,6 +1,6 @@
-# TypeScript ObjectMother (ts-object-mother)
+# TypeScript Dossier (ts-dossier)
 
-> An ObjectMother support library to facilitate the easy creation of builders in TypeScript
+> A support library to facilitate the easy creation of builders for use with an Object-Mother test pattern in TypeScript
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -11,7 +11,7 @@
 ## Install
 
 ```bash
-npm install @makerx/ts-object-mother --save-dev
+npm install @makerx/ts-dossier --save-dev
 ```
 
 ## Usage
@@ -31,8 +31,8 @@ export type Shape = {
 Then define a builder for that model
 
 ```ts
-import { randomElement, randomNumberBetween, randomString } from '@makerx/ts-object-mother'
-import { DataBuilder, proxyBuilder } from '@makerx/ts-object-mother'
+import { randomElement, randomNumberBetween, randomString } from '@makerx/ts-dossier'
+import { DataBuilder, proxyBuilder } from '@makerx/ts-dossier'
 import { Shape } from './shape'
 
 class ShapeBuilder extends DataBuilder<Shape> {
@@ -91,13 +91,13 @@ describe('The square', () => {
 
 Try it out on [StackBlitz](https://stackblitz.com/edit/node-au9p8x?file=shape.spec.ts)
 
-[build-img]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/MakerXStudio/ts-object-mother/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/ts-object-mother
-[downloads-url]:https://www.npmtrends.com/@makerx/ts-object-mother
-[npm-img]:https://img.shields.io/npm/v/@makerx/ts-object-mother
-[npm-url]:https://www.npmjs.com/package/@makerx/ts-object-mother
-[issues-img]:https://img.shields.io/github/issues/MakerXStudio/ts-object-mother
-[issues-url]:https://github.com/MakerXStudio/ts-object-mother/issues
+[build-img]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml/badge.svg
+[build-url]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml
+[downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/ts-dossier
+[downloads-url]:https://www.npmtrends.com/@makerx/ts-dossier
+[npm-img]:https://img.shields.io/npm/v/@makerx/ts-dossier
+[npm-url]:https://www.npmjs.com/package/@makerx/ts-dossier
+[issues-img]:https://img.shields.io/github/issues/MakerXStudio/ts-dossier
+[issues-url]:https://github.com/MakerXStudio/ts-dossier/issues
 [semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]:https://github.com/semantic-release/semantic-release

@@ -2,13 +2,13 @@
   "outPath": "/out",
   "rootPath": null,
   "readmeFileName": null,
-  "title": "TS Object Mother",
+  "title": "TS Dossier",
   "titleSuperscript": "Proudly built and maintained by [MakerX](https://makerx.com.au)",
   "author": null,
   "name": null,
   "description": null,
   "gitHubUrl": null,
-  "soeTags": ["MakerX", "ObjectMother", "TypeScript", "TS", "Object-Mother"],
+  "soeTags": ["MakerX", "Dossier", "TypeScript", "TS", "Object-Mother", "Data-Builder"],
   "miscellaneousPages": null,
   "codeDocs": {
     "path": "/code-docs"
