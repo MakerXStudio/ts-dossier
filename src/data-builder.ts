@@ -1,7 +1,7 @@
 import { deepClone } from './deep-clone'
 
 /**
- * Data builder is an abstract class builders can inherit to make working with the {@linkplain proxyBuilder} easier.
+ * Data builder is an abstract class builders can inherit to make working with the {@linkplain dossierProxy} easier.
  *
  * ```typescript
  * export class ShapeBuilder extends DataBuilder<Shape> {
@@ -18,7 +18,7 @@ import { deepClone } from './deep-clone'
  *   }
  * }
  *
- * export const shapeBuilder = proxyBuilder<ShapeBuilder, Shape>(ShapeBuilder)
+ * export const shapeBuilder = dossierProxy<ShapeBuilder, Shape>(ShapeBuilder)
  * ```
  */
 export abstract class DataBuilder<T> {
@@ -89,7 +89,7 @@ type DynamicDataBuilder<TDataBuilder, TData extends object> = TDataBuilder & Wit
  *   }
  * }
  *
- * const shapeBuilder = proxyBuilder<ShapeBuilder, Shape>(ShapeBuilder)
+ * const shapeBuilder = dossierProxy<ShapeBuilder, Shape>(ShapeBuilder)
  *
  * const shape = shapeBuilder().withName('Square').withSides(4).withColour('Red').build()
  *
@@ -97,7 +97,7 @@ type DynamicDataBuilder<TDataBuilder, TData extends object> = TDataBuilder & Wit
  * ```
  * @param builder The constructor to call to create a new instance of the builder.
  */
-export function proxyBuilder<TDataBuilder, TData extends object>(builder: {
+export function dossierProxy<TDataBuilder, TData extends object>(builder: {
   new (): TDataBuilder
 }): () => DynamicDataBuilder<TDataBuilder, TData> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return

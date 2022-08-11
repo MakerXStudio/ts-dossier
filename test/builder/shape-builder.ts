@@ -1,4 +1,4 @@
-import { DataBuilder, proxyBuilder, randomElement, randomNumberBetween, randomString } from '../../src'
+import { DataBuilder, dossierProxy, randomElement, randomNumberBetween, randomString } from '../../src'
 import { Shape } from '../model/shape'
 
 export class ShapeBuilder extends DataBuilder<Shape> {
@@ -15,4 +15,4 @@ export class ShapeBuilder extends DataBuilder<Shape> {
   }
 }
 
-export const shapeBuilder = proxyBuilder<ShapeBuilder, Shape>(ShapeBuilder)
+export const shapeBuilder = dossierProxy<ShapeBuilder, Shape>(ShapeBuilder)

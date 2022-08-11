@@ -1,4 +1,4 @@
-import { DataBuilder, proxyBuilder, randomString } from '../../src'
+import { DataBuilder, dossierProxy, randomString } from '../../src'
 import { MongooseModel } from '../model/mongoose-model'
 import { Types } from 'mongoose'
 
@@ -15,4 +15,4 @@ export class MongooseModelBuilder extends DataBuilder<MongooseModel> {
   }
 }
 
-export const mongooseModelBuilder = proxyBuilder<MongooseModelBuilder, MongooseModel>(MongooseModelBuilder)
+export const mongooseModelBuilder = dossierProxy<MongooseModelBuilder, MongooseModel>(MongooseModelBuilder)

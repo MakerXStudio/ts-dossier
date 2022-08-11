@@ -1,4 +1,4 @@
-export { DataBuilder, proxyBuilder } from './data-builder'
+export { DataBuilder, dossierProxy } from './data-builder'
 export {
   randomDate,
   randomDateBetween,

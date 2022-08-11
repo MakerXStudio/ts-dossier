@@ -32,7 +32,7 @@ Then define a builder for that model
 
 ```ts
 import { randomElement, randomNumberBetween, randomString } from '@makerx/ts-dossier'
-import { DataBuilder, proxyBuilder } from '@makerx/ts-dossier'
+import { DataBuilder, dossierProxy } from '@makerx/ts-dossier'
 import { Shape } from './shape'
 
 class ShapeBuilder extends DataBuilder<Shape> {
@@ -49,7 +49,7 @@ class ShapeBuilder extends DataBuilder<Shape> {
   }
 }
 
-export const shapeBuilder = proxyBuilder<ShapeBuilder, Shape>(ShapeBuilder)
+export const shapeBuilder = dossierProxy<ShapeBuilder, Shape>(ShapeBuilder)
 ```
 
 Then define a mother to build known models for testing
