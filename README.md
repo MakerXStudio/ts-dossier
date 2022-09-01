@@ -1,6 +1,6 @@
 # TypeScript Dossier (ts-dossier)
 
-> A support library to facilitate the easy creation of builders for use with an Object-Mother test pattern in TypeScript
+> A support library to facilitate the easy creation of test data [builders](https://en.wikipedia.org/wiki/Builder_pattern) for use with an [Object-Mother](https://www.martinfowler.com/bliki/ObjectMother.html) pattern in TypeScript
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -24,33 +24,68 @@ type Colour = 'Blue' | 'Red' | 'Yellow' | 'Green'
 export type Shape = {
   name: string
   sides: number
+  sideLengths: number[]
   colour: Colour
 }
 ```
 
-Then define a builder for that model
+Then define a Builder for that model
 
 ```ts
 import { randomElement, randomNumberBetween, randomString } from '@makerx/ts-dossier'
 import { DataBuilder, dossierProxy } from '@makerx/ts-dossier'
 import { Shape } from './shape'
 
+function generateSideLengths(sides: number) {
+  return [...Array(sides).keys()].map((_) => randomNumberBetween(1, 999))
+}
+
 class ShapeBuilder extends DataBuilder<Shape> {
   constructor() {
+    const sides = randomNumberBetween(1, 4)
     super({
       name: randomString(10, 20),
-      sides: randomNumberBetween(1, 4),
+      sides,
+      sideLengths: generateSideLengths(sides),
       colour: randomElement(['Blue', 'Red', 'Yellow', 'Green']),
     })
   }
 
-  public withName(name: string) {
-    return this.with('name', name + ' Intercepted')
+  public withSides(sides: number) {
+    this.with('sides', sides)
+    if (this.thing.sideLengths.length != sides) {
+      this.with('sideLengths', generateSideLengths(sides))
+    }
+    return this
+  }
+
+  public asSquare(length: number) {
+    this.thing = {
+      ...this.thing,
+      name: 'Square',
+      sides: 4,
+      sideLengths: [length, length, length, length],
+    }
+    return this
+  }
+
+  public asIsoscelesTriangle(length: number, perimeter: number) {
+    this.thing = {
+      ...this.thing,
+      name: 'Isosceles triangle',
+      sides: 3,
+      sideLengths: [length, length, perimeter - length * 2],
+    }
+    return this
   }
 }
 
 export const shapeBuilder = dossierProxy<ShapeBuilder, Shape>(ShapeBuilder)
 ```
+
+With the builder defined, and using the dossier proxy, you now have access to the builder methods supplied by the builder itself and the ones defined for you by the Dossier proxy.
+
+![Intellisense Example](./public/IntellisenseExample.png)
 
 Then define a mother to build known models for testing
 
@@ -58,11 +93,14 @@ Then define a mother to build known models for testing
 import { shapeBuilder } from './shape-builder'
 
 export const shapeMother = {
-  square: () => {
-    return shapeBuilder().withName('Square').withSides(4).withColour('Blue')
+  blueSquare: () => {
+    return shapeBuilder().asSquare(20).withColour('Blue')
   },
-  triangle: () => {
+  greenTriangle: () => {
     return shapeBuilder().withName('Triangle').withSides(3).withColour('Green')
+  },
+  redIsoscelesTriangle: () => {
+    return shapeBuilder().asIsoscelesTriangle(20, 45).withColour('Red')
   },
 }
 ```
@@ -75,16 +113,38 @@ import { shapeMother } from './shape-mother'
 
 describe('The square', () => {
   it('has four sides', () => {
-    const shape = shapeMother.square().build()
+    const shape = shapeMother.blueSquare().build()
     expect(shape.sides).toBe(4)
   })
+  it('has four sides of equal length', () => {
+    const shape = shapeMother.blueSquare().build()
+    expect(shape.sideLengths).toEqual(expect.arrayContaining([...Array(4)].map((_) => shape.sideLengths[0])))
+  })
   it('is named correctly', () => {
-    const shape = shapeMother.square().build()
-    expect(shape.name).toBe('Square Intercepted')
+    const shape = shapeMother.blueSquare().build()
+    expect(shape.name).toBe('Square')
   })
   it('is coloured blue', () => {
-    const shape = shapeMother.square().build()
+    const shape = shapeMother.blueSquare().build()
     expect(shape.colour).toBe('Blue')
+  })
+})
+describe('The isosceles triangle', () => {
+  it('has three sides', () => {
+    const shape = shapeMother.redIsoscelesTriangle().build()
+    expect(shape.sides).toBe(3)
+  })
+  it('has two sides of equal length', () => {
+    const shape = shapeMother.redIsoscelesTriangle().build()
+    expect(shape.sideLengths.reduce<number[]>((a, c) => (a.includes(c) ? a : [...a, c]), [])).toHaveLength(2)
+  })
+  it('is named correctly', () => {
+    const shape = shapeMother.redIsoscelesTriangle().build()
+    expect(shape.name).toBe('Isosceles triangle')
+  })
+  it('is coloured red', () => {
+    const shape = shapeMother.redIsoscelesTriangle().build()
+    expect(shape.colour).toBe('Red')
   })
 })
 ```
@@ -93,7 +153,7 @@ Try it out on [StackBlitz](https://stackblitz.com/edit/node-au9p8x?file=shape.sp
 
 ## Random Data Builders
 
-Dossier come with a variety of random data builders - View detailed function descriptions includes arguments in the [code docs](https://makerxstudio.github.io/ts-dossier/docs/modules~data_utilties).
+Dossier comes with a variety of random data builders - View detailed function descriptions includes arguments in the [code docs](https://makerxstudio.github.io/ts-dossier/docs/modules~data_utilties).
 
 | Name                      | Function            | Other                                                                        |
 |---------------------------|---------------------|------------------------------------------------------------------------------|
