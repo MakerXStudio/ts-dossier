@@ -9,6 +9,7 @@
   "description": null,
   "gitHubUrl": null,
   "soeTags": null,
+  "assetsPath": "/public",
   "miscellaneousPages": null,
   "codeDocs": {
     "path": "/code-docs"
