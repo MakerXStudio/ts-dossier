@@ -37,7 +37,7 @@
     "url": "git+https://github.com/MakerXStudio/ts-dossier.git"
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=16.0"
   },
   "peeprDependencies": {},
   "devDependencies": {
