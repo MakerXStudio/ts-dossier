@@ -6,7 +6,7 @@ export class MongooseModelBuilder extends DataBuilder<MongooseModel> {
   constructor() {
     super({
       name: randomString(10, 20),
-      someId: new Types.ObjectId()
+      someId: new Types.ObjectId(),
     })
   }
 
