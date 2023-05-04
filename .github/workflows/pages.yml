@@ -33,7 +33,7 @@ jobs:
         uses: actions/configure-pages@v1
 
       - name: Restore packages
-        run: npm ci
+        run: npm ci -f
 
       - name: Build public website
         run: npm run generate-website

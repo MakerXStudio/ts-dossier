@@ -30,7 +30,7 @@ jobs:
           # cache-dependency-path: subdir/package-lock.json
 
       - name: Restore packages
-        run: npm ci
+        run: npm ci -f
 
       - name: Lint commit messages
         run: npx commitlint --from ${{ github.event.before }} --to ${{ github.event.head }} --verbose
