@@ -18,4 +18,4 @@ export {
   resetIncrementedNumbers,
   randomDateRangeMax,
   randomDateRangeMin,
-} from './data-utilties'
+} from './data-utilities'
