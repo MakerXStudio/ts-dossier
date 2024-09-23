@@ -167,7 +167,7 @@ const adjectives = ['adorable', 'agreeable', 'adventurous', 'bewildered', 'blush
 // prettier-ignore
 const adverb = ['really', 'madly', 'abnormally', 'always', 'anxiously', 'blissfully', 'frenetically', 'queasily', 'warmly', 'rightfully', 'generally', 'hopefully', 'wonderfully', 'gloomily', 'strictly', 'busily', 'terribly', 'mightily', 'sometimes', 'greatly', 'lazily', 'carelessly', 'rudely']
 // prettier-ignore
-const mailProviers = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'aol.com', 'msn.com', 'hotmail.co.uk', 'web.de', 'me.com', 'mac.com']
+const mailProviders = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'aol.com', 'msn.com', 'hotmail.co.uk', 'web.de', 'me.com', 'mac.com']
 
 /**
  * Generates a random "thing's" name.
