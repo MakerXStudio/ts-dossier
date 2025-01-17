@@ -18,6 +18,18 @@
 export function deepClone<T>(source: T): T {
   if (Array.isArray(source)) return source.map((item) => deepClone(item)) as unknown as T
 
+  if (source instanceof Int8Array) return new Int8Array(source) as unknown as T
+  if (source instanceof Uint8Array) return new Uint8Array(source) as unknown as T
+  if (source instanceof Uint8ClampedArray) return new Uint8ClampedArray(source) as unknown as T
+  if (source instanceof Int16Array) return new Int16Array(source) as unknown as T
+  if (source instanceof Uint16Array) return new Uint16Array(source) as unknown as T
+  if (source instanceof Int32Array) return new Int32Array(source) as unknown as T
+  if (source instanceof Uint32Array) return new Uint32Array(source) as unknown as T
+  if (source instanceof Float32Array) return new Float32Array(source) as unknown as T
+  if (source instanceof Float64Array) return new Float64Array(source) as unknown as T
+  if (source instanceof BigInt64Array) return new BigInt64Array(source) as unknown as T
+  if (source instanceof BigUint64Array) return new BigUint64Array(source) as unknown as T
+
   if (source instanceof Date) return new Date(source.getTime()) as unknown as T
 
   if (source && typeof source === 'object') {
