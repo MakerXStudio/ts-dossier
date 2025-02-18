@@ -39,5 +39,8 @@ jobs:
       - name: Build package
         run: npm run build
 
+      - name: Generate website
+        run: npm run generate-website
+
       - name: Run tests
         run: npm test
