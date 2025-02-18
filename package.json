@@ -27,10 +27,7 @@
     "lint": "eslint ./src/ --ext .ts",
     "lint:fix": "eslint ./src/ --ext .ts --fix",
     "commitlint": "commitlint --edit -o",
-    "generate-doc": "typedoc src/",
-    "prepare": "husky install",
-    "generate-website":"npm run generate-doc && npx repository-website-generator",
-    "serve-generated-website": "http-server -c-1 ./out"
+    "generate-doc": "typedoc src/"
   },
   "repository": {
     "type": "git",
@@ -43,7 +40,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
-    "@makerx/repository-website-generator": "^1.6.2",
     "@types/jest": "^29.5.1",
     "@types/node": "^18.16.3",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
