@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any */
+
 // Ref: https://javascript.plainenglish.io/deep-clone-an-object-and-preserve-its-type-with-typescript-d488c35e5574
 // TODO: Make this the fallback when using classes or when structuredClone is unavailable
 /**
@@ -37,14 +38,11 @@ export function deepClone<T>(source: T): T {
       return Object.getPrototypeOf(source).constructor(source) as unknown as T
     }
 
-    return Object.getOwnPropertyNames(source).reduce(
-      (o, prop) => {
-        Object.defineProperty(o, prop, Object.getOwnPropertyDescriptor(source, prop) as any)
-        o[prop] = deepClone((source as Record<string, any>)[prop])
-        return o as unknown as T
-      },
-      Object.create(Object.getPrototypeOf(source))
-    )
+    return Object.getOwnPropertyNames(source).reduce((o, prop) => {
+      Object.defineProperty(o, prop, Object.getOwnPropertyDescriptor(source, prop) as any)
+      o[prop] = deepClone((source as { [key: string]: any })[prop])
+      return o as unknown as T
+    }, Object.create(Object.getPrototypeOf(source)))
   }
 
   return source
