@@ -1,0 +1,23 @@
+{
+  "outPath": "/out",
+  "rootPath": null,
+  "readmeFileName": null,
+  "title": "TS Dossier",
+  "titleSuperscript": "Proudly built and maintained by [MakerX](https://makerx.com.au)",
+  "author": null,
+  "name": null,
+  "description": null,
+  "gitHubUrl": null,
+  "soeTags": null,
+  "assetsPath": "/public",
+  "miscellaneousPages": null,
+  "codeDocs": {
+    "path": "/code-docs"
+  },
+  "theme": {
+    "iconLogo": "/theme/makerx-icon.png",
+    "imageLogo": "/theme/makerx-logo.png",
+    "imageLogoLink": "https://makerx.com.au"
+  },
+  "attribution": []
+}
