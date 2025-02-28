@@ -18,15 +18,17 @@ node_modules/
 # Optional eslint cache
 .eslintcache
 
-# dotenv environment variables file
-.env.test
-.env.local
-
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Jetbrains
-.idea
+# IDE - IntelliJ based
+# Default (ignore everything)
+.idea/*
+# Prettier - run on save
+!.idea/prettier.xml
+# Lint - fix on save
+!.idea/jsLinters/
+!.idea/jsLinters/eslint.xml
 
 # yarn v2
 .yarn/cache
