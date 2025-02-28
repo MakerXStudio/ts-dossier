@@ -4,43 +4,35 @@ on:
   pull_request:
     branches: [ 'main' ]
 
+permissions:
+  contents: read
+
 jobs:
-  build:
+  pull_request:
+    uses: makerxstudio/shared-config/.github/workflows/node-ci.yml@main
+    with:
+      node-version: lts/*
+      working-directory: ./
+      run-commit-lint: true
+      run-build: true
+  check_docs:
+    name: Check code docs
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    name: Build and test with Node ${{ matrix.node-version }}
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
+      - name: Clone repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          fetch-depth: 1
+      - name: Use Node.js lts/*
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          # == Cache frequently built and/or with large dependencies ==
-          # == Eviction policy: not accessed in over 7 days
-          # == Limit: 10 GB
-          # cache: 'npm'
-          # == Path to lock file when using mono repos ==
-          # cache-dependency-path: subdir/package-lock.json
-
-      - name: Restore packages
-        run: npm ci -f
-
-      - name: Lint commit messages
-        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
-
-      - name: Build package
-        run: npm run build
-
-      - name: Generate website
-        run: npm run generate-website
-
-      - name: Run tests
-        run: npm test
+          node-version: lts/*
+      - name: Check docs are up to date
+        shell: bash
+        run: |
+          npm ci --ignore-scripts
+          npm run generate:code-docs
+          # Add untracked files as empty so they come up in diff
+          git add -N .
+          # Print changed files and error out if there are changes after generating docs
+          git diff --exit-code --name-only

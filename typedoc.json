@@ -1,12 +1,13 @@
 {
-  "entryPoints": ["src/"],
-  "entryPointStrategy": "expand",
-  "out": "code-docs",
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.ts"],
+  "entryPointStrategy": "resolve",
+  "out": "docs",
   "plugin": ["typedoc-plugin-markdown"],
   "theme": "default",
   "cleanOutputDir": true,
-  "githubPages": false,
+  "githubPages": true,
   "readme": "none",
-  "entryDocument": "code-docs.md",
-  "publicPath": "/"
+  "publicPath": "/docs/",
+  "disableSources": true
 }

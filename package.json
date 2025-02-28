@@ -6,6 +6,9 @@
   "version": "0.0.0-development",
   "description": "A support library to facilitate the easy creation of builders for use with an Object-Mother test pattern in TypeScript",
   "keywords": [
+    "Unit-Testing",
+    "Builder",
+    "Object-Mother",
     "TypeScript",
     "TS"
   ],
@@ -14,56 +17,71 @@
   "bugs": {
     "url": "https://github.com/MakerXStudio/ts-dossier/issues"
   },
-  "homepage": "https://makerxstudio.github.io/ts-dossier",
-  "main": "./dist/src/index.js",
-  "files": [
-    "dist/**/*"
-  ],
+  "homepage": "https://github.com/MakerXStudio/ts-dossier/#readme",
+  "type": "module",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "build": "npx tsc",
+    "audit": "better-npm-audit audit",
+    "build": "run-s build:*",
+    "build:0-clean": "rimraf dist",
+    "build:1-compile": "rollup -c --configPlugin typescript={tsconfig:\\'tsconfig.build.json\\'}",
+    "build:3-copy-pkg-json": "npx --yes @makerx/ts-toolkit@latest copy-package-json --custom-sections module main type types exports",
+    "build:4-copy-readme": "cpy README.md LICENSE dist",
+    "build:5-fix-readme-links": "replace-in-files --string '(./' --replacement '(https://github.com/MakerXStudio/ts-npm-package-template-sandbox/blob/main/' dist/README.md",
+    "build:6-fix-types-location": "cpy 'dist/src/**/*.*' 'dist' && rimraf dist/src && rimraf dist/rollup.config.d.ts",
+    "check-types": "tsc --noEmit",
+    "format:fix": "prettier --write ./src/",
+    "generate:code-docs": "typedoc",
+    "lint": "eslint ./src/",
+    "lint:commit": "commitlint --edit -o",
+    "lint:fix": "eslint ./src/ --fix",
+    "pre-commit": "run-s check-types lint:fix audit format:fix test generate:code-docs",
     "semantic-release": "semantic-release",
-    "lint": "eslint ./src/ --ext .ts",
-    "lint:fix": "eslint ./src/ --ext .ts --fix",
-    "commitlint": "commitlint --edit -o",
-    "generate-doc": "typedoc src/",
-    "prepare": "husky install",
-    "generate-website":"npm run generate-doc && npx repository-website-generator",
-    "serve-generated-website": "http-server -c-1 ./out"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MakerXStudio/ts-dossier.git"
   },
   "engines": {
-    "node": ">=16.0"
+    "node": ">=22.0"
   },
   "peeprDependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
-    "@makerx/repository-website-generator": "^1.6.2",
-    "@types/jest": "^29.5.1",
-    "@types/node": "^18.16.3",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
-    "conventional-changelog-conventionalcommits": "^5.0.0",
-    "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "jest": "^29.5.0",
-    "prettier": "^2.8.8",
-    "semantic-release": "^21.0.2",
-    "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1",
-    "typedoc": "^0.24.6",
-    "typedoc-plugin-markdown": "^3.15.3",
-    "typescript": "^4.9.5",
-    "mongoose": "^6.11.0",
-    "http-server": "^14.1.1"
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@makerx/prettier-config": "2.0.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^18.19.76",
+    "better-npm-audit": "^3.11.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "jest": "^29.7.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.5.1",
+    "replace-in-files-cli": "^3.0.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.34.8",
+    "semantic-release": "^24.2.3",
+    "ts-jest": "^29.2.6",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typedoc": "^0.27.9",
+    "typedoc-plugin-markdown": "^4.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "mongoose": "^8.10.1"
   },
   "release": {
     "branches": [
@@ -81,6 +99,10 @@
             },
             {
               "type": "chore",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
               "release": "patch"
             }
           ]
@@ -104,13 +126,24 @@
                 "type": "build",
                 "section": "Dependencies and Other Build Updates",
                 "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": "Code Refactoring"
               }
             ]
           }
         }
       ],
       "@semantic-release/npm",
-      "@semantic-release/github"
+      ["@semantic-release/github", {
+        "assets": [
+          {
+            "path": "artifacts/package.zip",
+            "label": "package"
+          }
+        ]
+      }]
     ]
   }
 }

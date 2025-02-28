@@ -1,37 +1,29 @@
 ---
-name: 🌈 Feature request
-about: Suggest an amazing new idea for this project
+name: 🌈 Feature Request
+about: Suggest a new idea for this project
 title: ''
 labels: enhancement
 assignees: ''
-
 ---
 
 ## Feature Request
 
-**Is your feature request related to a problem? Please describe**
+**Problem**
 
-<!-- A clear and concise description of what the problem is. Ex. I have an issue when [...] -->
+<!-- Briefly describe the problem -->
 
-**Describe the solution you'd like**
+**Solution**
 
-<!-- A clear and concise description of what you want to happen. Add any considered drawbacks -->
+<!-- Briefly describe the desired solution -->
 
-**Describe alternatives you've considered**
+**Alternatives**
 
-<!-- A clear and concise description of any alternative solutions or features you've considered -->
+<!-- Briefly describe any alternative solutions considered -->
 
-## Are you willing to resolve this issue by submitting a Pull Request?
+## Willing to Submit a Pull Request?
 
-<!--
-  Remember that first-time contributors are welcome! 🙌
--->
+- [ ] Yes, I have the time and know how to start
+- [ ] Yes, I have the time but need guidance
+- [ ] No, I don't have the time
 
-- [ ] Yes, I have the time, and I know how to start 💪
-- [ ] Yes, I have the time, but I don't know how to start. I would need guidance 🤗
-- [ ] No, I don't have the time, although I believe I could do it if I had the time... 😧
-- [ ] No, I don't have the time, and I wouldn't even know how to start 🙏
-
-<!--
-  👋 Have a great day, and thank you for the feature request!
--->
+<!-- Thank you for your feature request! -->

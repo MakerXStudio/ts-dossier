@@ -153,7 +153,7 @@ Try it out on [StackBlitz](https://stackblitz.com/edit/node-au9p8x?file=shape.sp
 
 ## Random Data Builders
 
-Dossier comes with a variety of random data builders - View detailed function descriptions includes arguments in the [code docs](https://makerxstudio.github.io/ts-dossier/docs/modules~data_utilties).
+Dossier comes with a variety of random data builders - View detailed function descriptions includes arguments in the [code docs](./docs/README.md).
 
 | Name                      | Function            | Other                                                                        |
 |---------------------------|---------------------|------------------------------------------------------------------------------|
@@ -176,7 +176,7 @@ Dossier comes with a variety of random data builders - View detailed function de
 
 [build-img]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/@MakerXStudio/ts-dossier
+[downloads-img]:https://img.shields.io/npm/dm/@MakerXStudio/ts-dossier
 [downloads-url]:https://www.npmtrends.com/@makerx/ts-dossier
 [npm-img]:https://img.shields.io/npm/v/@makerx/ts-dossier
 [npm-url]:https://www.npmjs.com/package/@makerx/ts-dossier
