@@ -176,7 +176,7 @@ Dossier comes with a variety of random data builders - View detailed function de
 
 [build-img]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/MakerXStudio/ts-dossier/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dm/@MakerXStudio/ts-dossier
+[downloads-img]:https://img.shields.io/npm/dm/%40makerx%2Fts-dossier
 [downloads-url]:https://www.npmtrends.com/@makerx/ts-dossier
 [npm-img]:https://img.shields.io/npm/v/@makerx/ts-dossier
 [npm-url]:https://www.npmjs.com/package/@makerx/ts-dossier
