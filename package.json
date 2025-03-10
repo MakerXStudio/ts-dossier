@@ -29,7 +29,7 @@
     "build:1-compile": "rollup -c --configPlugin typescript={tsconfig:\\'tsconfig.build.json\\'}",
     "build:3-copy-pkg-json": "npx --yes @makerx/ts-toolkit@latest copy-package-json --custom-sections module main type types exports",
     "build:4-copy-readme": "cpy README.md LICENSE dist",
-    "build:5-fix-readme-links": "replace-in-files --string '(./' --replacement '(https://github.com/MakerXStudio/ts-npm-package-template-sandbox/blob/main/' dist/README.md",
+    "build:5-fix-readme-links": "replace-in-files --string '(./' --replacement '(https://github.com/MakerXStudio/ts-dossier/blob/main/' dist/README.md",
     "build:6-fix-types-location": "cpy 'dist/src/**/*.*' 'dist' && rimraf dist/src && rimraf dist/rollup.config.d.ts",
     "check-types": "tsc --noEmit",
     "format:fix": "prettier --write ./src/",
